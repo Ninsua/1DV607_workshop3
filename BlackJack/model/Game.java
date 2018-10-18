@@ -35,7 +35,8 @@ public class Game {
   public boolean Stand()
   {
     // TODO: Implement this according to Game_Stand.sequencediagram
-    return true;
+	  
+	  return m_dealer.Stand(m_player);
   }
   
   public Iterable<Card> GetDealerHand()

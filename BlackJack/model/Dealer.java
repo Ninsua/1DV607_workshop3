@@ -6,7 +6,7 @@ public class Dealer extends Player {
 
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
-  private IHitStrategy m_hitRule;
+  private IHitStrategy m_hitRule;	
 
   public Dealer(RulesFactory a_rulesFactory) {
   
@@ -40,6 +40,21 @@ public class Dealer extends Player {
       return true;
     }
     return false;
+  }
+  
+  public boolean Stand(Player a_player) {
+	  if (m_deck != null) {
+		  ShowHand();
+		  
+		  while(m_hitRule.DoHit(this)) {
+			 Card c = m_deck.GetCard();
+			 c.Show(true);
+			 
+			 DealCard(c);
+		  }
+	  }
+	  
+	  return true;
   }
 
   public boolean IsDealerWinner(Player a_player) {
