@@ -14,8 +14,16 @@ public class SwedishView implements IView
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
+
+        public void DisplayInstructions()
+        {
+         
+            for(int i = 0; i < 50; i++) {System.out.print("\n");};
+
+            System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+        }
         
-        public int GetInput()
+        private int GetInput()
         {
           try {
             int c = System.in.read();

@@ -1,7 +1,11 @@
 package BlackJack.model;
 
-import BlackJack.model.rules.*;
-import BlackJack.model.rules.Win.*;
+import java.util.ArrayList;
+
+import BlackJack.model.rules.IHitStrategy;
+import BlackJack.model.rules.INewGameStrategy;
+import BlackJack.model.rules.RulesFactory;
+import BlackJack.model.rules.Win.IWinStrategy;
 
 public class Dealer extends Player {
 
@@ -9,6 +13,7 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;	
   private IWinStrategy m_winRule;
+  private ArrayList<HandObserver> subscribers;
 
   public Dealer(RulesFactory a_rulesFactory) {
   
@@ -16,30 +21,44 @@ public class Dealer extends Player {
     m_hitRule = a_rulesFactory.GetHitRule();
     m_winRule = a_rulesFactory.getWinRule();	//Creates win algorithm
     
+    subscribers = new ArrayList<>();
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
       System.out.println("" + c.GetValue() + " of " + c.GetColor());
     }    */
   }
   
+  void addSubscriber(HandObserver newSubscriber) {
+    subscribers.add(newSubscriber);
+  }
+
+  private void notifySubscribers() {
+    for(HandObserver subscriber : subscribers) {
+      subscriber.handUpdate();
+    }
+  }
   
   public boolean NewGame(Player a_player) {
     if (m_deck == null || IsGameOver()) {
       m_deck = new Deck();
       ClearHand();
       a_player.ClearHand();
-      return m_newGameRule.NewGame(m_deck, this, a_player);   
+      
+      notifySubscribers();
+
+      return m_newGameRule.NewGame(m_deck, this, a_player);
     }
     return false;
   }
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      Card c;
-      c = m_deck.GetCard();
+      Card c = m_deck.GetCard();
       c.Show(true);
       a_player.DealCard(c);
       
+      notifySubscribers();
+
       return true;
     }
     return false;
@@ -53,7 +72,9 @@ public class Dealer extends Player {
 			 Card c = m_deck.GetCard();
 			 c.Show(true);
 			 
-			 DealCard(c);
+       DealCard(c);
+       
+       notifySubscribers();
 		  }
 	  }
 	  
@@ -70,5 +91,7 @@ public class Dealer extends Player {
     }
     return false;
   }
+
+
   
 }
