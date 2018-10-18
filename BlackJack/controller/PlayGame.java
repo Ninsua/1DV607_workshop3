@@ -16,7 +16,7 @@ public class PlayGame implements HandObserver {
 
         a_game.addSubscriber(this);
 
-        a_view.DisplayWelcomeMessage();
+        handUpdate();
     }
     
     public boolean Play() {
@@ -39,7 +39,7 @@ public class PlayGame implements HandObserver {
     
     public void handUpdate() {
         pause(PAUSE_TIME);
-        a_view.DisplayInstructions();
+        a_view.DisplayWelcomeMessage();
         a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
         a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
     }

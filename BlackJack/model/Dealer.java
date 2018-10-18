@@ -32,7 +32,7 @@ public class Dealer extends Player {
     subscribers.add(newSubscriber);
   }
 
-  private void notifySubscribers() {
+  public void notifySubscribers() {
     for(HandObserver subscriber : subscribers) {
       subscriber.handUpdate();
     }
@@ -44,9 +44,7 @@ public class Dealer extends Player {
       ClearHand();
       a_player.ClearHand();
       
-      notifySubscribers();
-
-      return m_newGameRule.NewGame(m_deck, this, a_player);
+      return  m_newGameRule.NewGame(m_deck, this, a_player);
     }
     return false;
   }
@@ -67,14 +65,16 @@ public class Dealer extends Player {
   public boolean Stand(Player a_player) {
 	  if (m_deck != null) {
 		  ShowHand();
+      
+      notifySubscribers();
 		  
 		  while(m_hitRule.DoHit(this)) {
-			 Card c = m_deck.GetCard();
-			 c.Show(true);
-			 
-       DealCard(c);
-       
-       notifySubscribers();
+        Card c = m_deck.GetCard();
+        c.Show(true);
+        
+        DealCard(c);
+        
+        notifySubscribers();
 		  }
 	  }
 	  
