@@ -3,7 +3,6 @@ package BlackJack.view;
 public interface IView
 {
   void DisplayWelcomeMessage();
-  void DisplayInstructions();
   void collectSystemEvents();
   boolean newGameEvent();
   boolean hitEvent();

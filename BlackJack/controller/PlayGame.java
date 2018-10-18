@@ -15,8 +15,8 @@ public class PlayGame implements HandObserver {
         a_view = newView;
 
         a_game.addSubscriber(this);
-
-        handUpdate();
+        
+        displayUI();
     }
     
     public boolean Play() {
@@ -39,6 +39,10 @@ public class PlayGame implements HandObserver {
     
     public void handUpdate() {
         pause(PAUSE_TIME);
+        displayUI();
+    }
+    
+    private void displayUI() { // name change? ==========================================
         a_view.DisplayWelcomeMessage();
         a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
         a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());

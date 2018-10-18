@@ -13,15 +13,6 @@ public class SimpleView implements IView {
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
     }
 
-    
-    public void DisplayInstructions() {
-        for (int i = 0; i < 50; i++) {
-            System.out.print("\n");
-        }
-        
-        System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
-    }
-
     private int GetInput() {
         try {
             int c = System.in.read();
