@@ -8,7 +8,7 @@ class InternationalNewGameStrategy extends AbstractNewGameStrategy implements IN
 
   public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
     dealToPlayer(a_deck, a_dealer, a_player);
-    dealToDealer(a_deck, a_dealer);
+    dealToDealer(a_deck, a_dealer, true);
     dealToPlayer(a_deck, a_dealer, a_player);
     
     return true;

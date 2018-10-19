@@ -12,9 +12,9 @@ abstract class AbstractNewGameStrategy {
         a_dealer.notifySubscribers();
     }
 
-    void dealToDealer(Deck a_deck, Dealer a_dealer) {
+    void dealToDealer(Deck a_deck, Dealer a_dealer, boolean showCard) {
         c = a_deck.GetCard();
-        c.Show(true);    
+        c.Show(showCard);
         a_dealer.DealCard(c);
         a_dealer.notifySubscribers();
     }
