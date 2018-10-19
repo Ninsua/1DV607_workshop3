@@ -2,7 +2,7 @@ package BlackJack.model.rules;
 
 import BlackJack.model.*;
 
-abstract class NewGameStrategy {
+abstract class AbstractNewGameStrategy {
     Card c;
 
     void dealToPlayer(Deck a_deck, Dealer a_dealer, Player a_player) {        
