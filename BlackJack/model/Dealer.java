@@ -2,9 +2,8 @@ package BlackJack.model;
 
 import java.util.ArrayList;
 
-import BlackJack.model.rules.IHitStrategy;
-import BlackJack.model.rules.INewGameStrategy;
-import BlackJack.model.rules.RulesFactory;
+import BlackJack.model.rules.*;
+
 import BlackJack.model.rules.Win.IWinStrategy;
 
 public class Dealer extends Player {
@@ -15,10 +14,10 @@ public class Dealer extends Player {
   private IWinStrategy m_winRule;
   private ArrayList<HandObserver> subscribers;
 
-  public Dealer(RulesFactory a_rulesFactory) {
+  public Dealer(IRulesFactory a_rulesFactory) {
   
-    m_newGameRule = a_rulesFactory.GetNewGameRule();
-    m_hitRule = a_rulesFactory.GetHitRule();
+    m_newGameRule = a_rulesFactory.getNewGameRule();
+    m_hitRule = a_rulesFactory.getHitRule();
     m_winRule = a_rulesFactory.getWinRule();	//Creates win algorithm
     
     subscribers = new ArrayList<>();

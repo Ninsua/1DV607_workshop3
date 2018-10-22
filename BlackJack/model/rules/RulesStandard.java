@@ -1,17 +1,18 @@
 package BlackJack.model.rules;
+
 import BlackJack.model.rules.Win.*;
 
-public class RulesFactory {
+public class RulesStandard implements IRulesFactory {
 
-  public IHitStrategy GetHitRule() {
+  public IHitStrategy getHitRule() {
     return new BasicHitStrategy();
   }
 
-  public INewGameStrategy GetNewGameRule() {
+  public INewGameStrategy getNewGameRule() {
     return new AmericanNewGameStrategy();
   }
-  
+
   public IWinStrategy getWinRule() {
-	    return new EqualPlayerWins();
-	  }
+    return new EqualPlayerWins();
+  }
 }
