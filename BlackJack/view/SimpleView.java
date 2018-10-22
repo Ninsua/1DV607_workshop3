@@ -28,7 +28,7 @@ public class SimpleView implements IView {
         else if (rules[1] == 2)
             System.out.println("Soft 17");
 
-        System.out.print("New game strategy: ");
+        System.out.print("Dealing: ");
         if (rules[2] == 1)
             System.out.println("American");
         else if (rules[2] == 2)

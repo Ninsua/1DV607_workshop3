@@ -23,13 +23,13 @@ public class SwedishView implements IView
             else if (rules[0] == 2)
                 System.out.println("Spelaren");
     
-            System.out.print("Nytt kort: ");
+            System.out.print("Dragstrategi: ");
             if (rules[1] == 1)
                 System.out.println("Standard");
             else if (rules[1] == 2)
-                System.out.println("Soft 17");
+                System.out.println("Mjuk 17");
     
-            System.out.print("Speltyp: ");
+            System.out.print("Utdelning: ");
             if (rules[2] == 1)
                 System.out.println("Amerikansk");
             else if (rules[2] == 2)
@@ -87,6 +87,7 @@ public class SwedishView implements IView
                 System.out.println("" + colors[a_card.GetColor().ordinal()] + " " + values[a_card.GetValue().ordinal()]);
             }
         }
+        
         public void DisplayPlayerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
         {
             DisplayHand("Spelare", a_hand, a_score);
