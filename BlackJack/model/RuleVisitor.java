@@ -1,6 +1,5 @@
 package BlackJack.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import BlackJack.model.rules.*;

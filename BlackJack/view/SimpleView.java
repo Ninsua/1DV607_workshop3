@@ -1,9 +1,5 @@
 package BlackJack.view;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-
 public class SimpleView implements IView {
 
     private int input;
