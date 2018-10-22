@@ -6,13 +6,36 @@ public class SwedishView implements IView
 	private int input;
 	
         public void DisplayWelcomeMessage()
-        {
-         
+        {         
             for(int i = 0; i < 50; i++) {System.out.print("\n");};
 
             System.out.println("Hej Black Jack Världen");
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+        }
+
+        public void DisplayRules(int[] rules) {
+            System.out.println("Regler");
+    
+            System.out.print("Vinner vid lika: ");
+            if (rules[0] == 1)
+                System.out.println("Croupiern");
+            else if (rules[0] == 2)
+                System.out.println("Spelaren");
+    
+            System.out.print("Nytt kort: ");
+            if (rules[1] == 1)
+                System.out.println("Standard");
+            else if (rules[1] == 2)
+                System.out.println("Soft 17");
+    
+            System.out.print("Speltyp: ");
+            if (rules[2] == 1)
+                System.out.println("Amerikansk");
+            else if (rules[2] == 2)
+                System.out.println("Internationell");
+    
+            System.out.println();
         }
 
         private int GetInput()

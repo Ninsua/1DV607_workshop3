@@ -1,5 +1,9 @@
 package BlackJack.view;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class SimpleView implements IView {
 
     private int input;
@@ -8,9 +12,33 @@ public class SimpleView implements IView {
         for (int i = 0; i < 50; i++) {
             System.out.print("\n");
         }
-        
+
         System.out.println("Hello Black Jack World");
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
+    }
+
+    public void DisplayRules(int[] rules) {
+        System.out.println("Rules");
+
+        System.out.print("Wins on equal: ");
+        if (rules[0] == 1)
+            System.out.println("Dealer");
+        else if (rules[0] == 2)
+            System.out.println("Player");
+
+        System.out.print("Hit strategy: ");
+        if (rules[1] == 1)
+            System.out.println("Standard");
+        else if (rules[1] == 2)
+            System.out.println("Soft 17");
+
+        System.out.print("New game strategy: ");
+        if (rules[2] == 1)
+            System.out.println("American");
+        else if (rules[2] == 2)
+            System.out.println("International");
+
+        System.out.println();
     }
 
     private int GetInput() {

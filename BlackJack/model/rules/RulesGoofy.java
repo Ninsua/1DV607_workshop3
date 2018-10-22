@@ -3,7 +3,7 @@ package BlackJack.model.rules;
 import BlackJack.model.rules.Win.EqualDealerWins;
 import BlackJack.model.rules.Win.IWinStrategy;
 
-class RulesGoofy implements IRulesFactory {
+public class RulesGoofy implements IRulesFactory {
     @Override
     public IHitStrategy getHitRule() {
         return new BasicHitStrategy();

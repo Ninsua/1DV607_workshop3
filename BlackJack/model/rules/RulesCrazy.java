@@ -3,10 +3,10 @@ package BlackJack.model.rules;
 import BlackJack.model.rules.Win.EqualPlayerWins;
 import BlackJack.model.rules.Win.IWinStrategy;
 
-class RulesCrazy implements IRulesFactory {
+public class RulesCrazy implements IRulesFactory {
     @Override
     public IHitStrategy getHitRule() {
-        return new BasicHitStrategy(); //TODO kom på någon ny hit strategy och implementera
+        return new Soft17HitStrategy(); 
     }
 
     @Override

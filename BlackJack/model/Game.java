@@ -16,6 +16,10 @@ public class Game {
     m_dealer.addSubscriber(newSubscriber);
   }
 
+  public RuleVisitor getVisitor() {
+    return m_dealer.getVisitor();
+  }
+
   public boolean IsGameOver() {
     return m_dealer.IsGameOver();
   }

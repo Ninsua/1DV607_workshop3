@@ -13,12 +13,18 @@ public class Dealer extends Player {
   private IHitStrategy m_hitRule;	
   private IWinStrategy m_winRule;
   private ArrayList<HandObserver> subscribers;
+  private RuleVisitor visitor = new RuleVisitor();
 
   public Dealer(IRulesFactory a_rulesFactory) {
   
     m_newGameRule = a_rulesFactory.getNewGameRule();
     m_hitRule = a_rulesFactory.getHitRule();
     m_winRule = a_rulesFactory.getWinRule();	//Creates win algorithm
+
+    // Ruleset accepts rule visitor
+    m_newGameRule.accept(visitor);
+    m_hitRule.accept(visitor);
+    m_winRule.accept(visitor);
     
     subscribers = new ArrayList<>();
     /*for(Card c : m_deck.GetCards()) {
@@ -91,6 +97,8 @@ public class Dealer extends Player {
     return false;
   }
 
-
+  public RuleVisitor getVisitor() {
+    return visitor;
+  }
   
 }
