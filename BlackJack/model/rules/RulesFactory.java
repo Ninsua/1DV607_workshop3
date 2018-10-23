@@ -1,4 +1,5 @@
 package BlackJack.model.rules;
+import BlackJack.model.rules.Win.*;
 
 public class RulesFactory {
 
@@ -9,4 +10,8 @@ public class RulesFactory {
   public INewGameStrategy GetNewGameRule() {
     return new AmericanNewGameStrategy();
   }
+  
+  public IWinStrategy getWinRule() {
+	    return new EqualPlayerWins();
+	  }
 }
