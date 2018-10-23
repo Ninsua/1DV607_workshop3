@@ -2,6 +2,9 @@ package BlackJack.view;
 
 public class SwedishView implements IView 
     {
+	
+	private int input;
+	
         public void DisplayWelcomeMessage()
         {
          
@@ -11,8 +14,8 @@ public class SwedishView implements IView
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
-        
-        public int GetInput()
+
+        private int GetInput()
         {
           try {
             int c = System.in.read();
@@ -24,6 +27,26 @@ public class SwedishView implements IView
             System.out.println("" + e);
             return 0;
           }
+        }
+        
+        public void collectSystemEvents() {
+        	input = GetInput();
+        }
+        
+        public boolean newGameEvent() {
+        	return input == 'p';
+        }
+        
+        public boolean hitEvent() {
+        	return input == 'h';
+        }
+        
+        public boolean standEvent() {
+        	return input == 's';
+        }
+        
+        public boolean quitEvent() {
+        	return input == 'q';
         }
         
         public void DisplayCard(BlackJack.model.Card a_card)
