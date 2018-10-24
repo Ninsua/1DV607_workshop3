@@ -22,10 +22,6 @@ public class Dealer extends Player {
     m_winRule = a_rulesFactory.getWinRule();	//Creates win algorithm
     
     subscribers = new ArrayList<>();
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
   }
   
   void addSubscriber(HandObserver newSubscriber) {
@@ -51,9 +47,7 @@ public class Dealer extends Player {
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      Card c = m_deck.GetCard();
-      c.Show(true);
-      a_player.DealCard(c);
+      dealOpenCard(a_player);
       
       notifySubscribers();
 
@@ -69,10 +63,7 @@ public class Dealer extends Player {
       notifySubscribers();
 		  
 		  while(m_hitRule.DoHit(this)) {
-        Card c = m_deck.GetCard();
-        c.Show(true);
-        
-        DealCard(c);
+       dealOpenCard(this);
         
         notifySubscribers();
 		  }
@@ -92,6 +83,10 @@ public class Dealer extends Player {
     return false;
   }
 
-
+  private void dealOpenCard(Player player) {
+    Card c = m_deck.GetCard();
+    c.Show(true);
+    player.DealCard(c);
+  }
   
 }
