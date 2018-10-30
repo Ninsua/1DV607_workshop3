@@ -1,5 +1,8 @@
 package BlackJack.view;
 
+import BlackJack.model.RuleVisitor;
+import BlackJack.model.RuleVisitor.*;
+
 public class SwedishView implements IView 
     {
 	
@@ -14,25 +17,29 @@ public class SwedishView implements IView
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
 
-        public void DisplayRules(int[] rules) {
-            System.out.println("Regler");
+        public void DisplayRules(RuleVisitor rules) {
+            winsOnEqual equal = rules.getWinsOnEqual();        
+            hitStrategy strategy = rules.getHitStrategy();
+            newGameDeal deal = rules.getNewGameDeal();
+
+            System.out.println("-- Regler --");
     
             System.out.print("Vinner vid lika: ");
-            if (rules[0] == 1)
+            if (equal == winsOnEqual.Dealer)
                 System.out.println("Croupiern");
-            else if (rules[0] == 2)
+            else if (equal == winsOnEqual.Player)
                 System.out.println("Spelaren");
     
             System.out.print("Dragstrategi: ");
-            if (rules[1] == 1)
+            if (strategy == hitStrategy.Basic)
                 System.out.println("Standard");
-            else if (rules[1] == 2)
+            else if (strategy == hitStrategy.Soft17)
                 System.out.println("Mjuk 17");
     
             System.out.print("Utdelning: ");
-            if (rules[2] == 1)
+            if (deal == newGameDeal.American)
                 System.out.println("Amerikansk");
-            else if (rules[2] == 2)
+            else if (deal == newGameDeal.International)
                 System.out.println("Internationell");
     
             System.out.println();

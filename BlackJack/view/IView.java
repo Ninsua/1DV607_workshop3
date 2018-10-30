@@ -1,9 +1,11 @@
 package BlackJack.view;
 
+import BlackJack.model.RuleVisitor;
+
 public interface IView
 {
   void DisplayWelcomeMessage();
-  void DisplayRules(int[] rules);
+  void DisplayRules(RuleVisitor rules);
   void collectSystemEvents();
   boolean newGameEvent();
   boolean hitEvent();

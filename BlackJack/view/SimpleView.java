@@ -1,5 +1,8 @@
 package BlackJack.view;
 
+import BlackJack.model.RuleVisitor;
+import BlackJack.model.RuleVisitor.*;
+
 public class SimpleView implements IView {
 
     private int input;
@@ -13,25 +16,29 @@ public class SimpleView implements IView {
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
     }
 
-    public void DisplayRules(int[] rules) {
-        System.out.println("Rules");
+    public void DisplayRules(RuleVisitor rules) {        
+        winsOnEqual equal = rules.getWinsOnEqual();        
+        hitStrategy strategy = rules.getHitStrategy();
+        newGameDeal deal = rules.getNewGameDeal();
 
-        System.out.print("Wins on equal: ");
-        if (rules[0] == 1)
+        System.out.println("-- Rules --");
+        
+        System.out.print("Wins on equal: ");        
+        if (equal == winsOnEqual.Dealer)
             System.out.println("Dealer");
-        else if (rules[0] == 2)
+        else if (equal == winsOnEqual.Player)
             System.out.println("Player");
 
         System.out.print("Hit strategy: ");
-        if (rules[1] == 1)
+        if (strategy == hitStrategy.Basic)
             System.out.println("Standard");
-        else if (rules[1] == 2)
+        else if (strategy == hitStrategy.Soft17)
             System.out.println("Soft 17");
 
         System.out.print("Dealing: ");
-        if (rules[2] == 1)
+        if (deal == newGameDeal.American)
             System.out.println("American");
-        else if (rules[2] == 2)
+        else if (deal == newGameDeal.International)
             System.out.println("International");
 
         System.out.println();
