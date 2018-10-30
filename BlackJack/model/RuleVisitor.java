@@ -6,15 +6,13 @@ import BlackJack.model.rules.Win.*;
 public class RuleVisitor {
     public enum winsOnEqual { Player, Dealer }
     public enum hitStrategy { Basic, Soft17 }
-    public enum newGameDeal { International, American } 
+    public enum newGameDeal { International, American }
+
     private winsOnEqual equal;
     private hitStrategy hit;
-    private newGameDeal newgame;        
-     
+    private newGameDeal newgame;
 
-    /* Win conditions
-    ** 1 = Dealer wins on equal
-    ** 2 = Player wins on equal */
+    // Wins on equal
     public void visit(EqualDealerWins eDealerWins) {
         equal = winsOnEqual.Dealer;
     }
@@ -23,9 +21,7 @@ public class RuleVisitor {
         equal = winsOnEqual.Player;
     }
 
-    /* Hit strategies
-    ** 1 = Basic hit strategy
-    ** 2 = Soft 17 hit strategy */
+    // Hit strategy
     public void visit(BasicHitStrategy bHitStrategy) {
         hit = hitStrategy.Basic;
     }
@@ -34,9 +30,7 @@ public class RuleVisitor {
         hit = hitStrategy.Soft17;
     }
 
-    /* New game strategies
-    ** 1 = American new game strategy
-    ** 2 = International new game strategy */
+    // New game deal
     public void visit(AmericanNewGameStrategy aNewGameStrategy) {
         newgame = newGameDeal.American;
     }
@@ -45,10 +39,7 @@ public class RuleVisitor {
         newgame = newGameDeal.International;
     }
 
-    public RuleVisitor getRules() {
-        return this;
-    }
-
+    // Return methods
     public winsOnEqual getWinsOnEqual() {
         return equal;
     }
