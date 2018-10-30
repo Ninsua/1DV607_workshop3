@@ -16,11 +16,7 @@ public class SimpleView implements IView {
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
     }
 
-    public void DisplayRules(RuleVisitor rules) {        
-        winsOnEqual equal = rules.getWinsOnEqual();        
-        hitStrategy strategy = rules.getHitStrategy();
-        newGameDeal deal = rules.getNewGameDeal();
-
+    public void DisplayRules(winsOnEqual equal, hitStrategy strategy, newGameDeal deal) {                
         System.out.println("-- Rules --");
         
         System.out.print("Wins on equal: ");        

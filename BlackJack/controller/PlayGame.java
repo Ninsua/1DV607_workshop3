@@ -47,7 +47,7 @@ public class PlayGame implements HandObserver {
     
     private void displayUI() { // name change? ==========================================
         a_view.DisplayWelcomeMessage();
-        a_view.DisplayRules(a_visitor);
+        a_view.DisplayRules(a_visitor.getWinsOnEqual(), a_visitor.getHitStrategy(), a_visitor.getNewGameDeal());
         a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
         a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
     }

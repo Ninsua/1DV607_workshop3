@@ -17,11 +17,7 @@ public class SwedishView implements IView
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
 
-        public void DisplayRules(RuleVisitor rules) {
-            winsOnEqual equal = rules.getWinsOnEqual();        
-            hitStrategy strategy = rules.getHitStrategy();
-            newGameDeal deal = rules.getNewGameDeal();
-
+        public void DisplayRules(winsOnEqual equal, hitStrategy strategy, newGameDeal deal) {        
             System.out.println("-- Regler --");
     
             System.out.print("Vinner vid lika: ");
