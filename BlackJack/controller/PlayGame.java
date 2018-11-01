@@ -2,18 +2,21 @@ package BlackJack.controller;
 
 import BlackJack.model.Game;
 import BlackJack.model.HandObserver;
+import BlackJack.model.RuleVisitor;
 import BlackJack.view.IView;
 
 public class PlayGame implements HandObserver {
 
     private final int PAUSE_TIME = 1000;
     private Game a_game;
-    private IView a_view;
+    private IView a_view;    
+    private RuleVisitor a_visitor;
 
     public PlayGame(Game newGame, IView newView) {
         a_game = newGame;
         a_view = newView;
-
+        a_visitor = newGame.getVisitor();
+        
         a_game.addSubscriber(this);
         
         displayUI();
@@ -44,6 +47,7 @@ public class PlayGame implements HandObserver {
     
     private void displayUI() { // name change? ==========================================
         a_view.DisplayWelcomeMessage();
+        a_view.DisplayRules(a_visitor.getWinsOnEqual(), a_visitor.getHitStrategy(), a_visitor.getNewGameDeal());
         a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
         a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
     }

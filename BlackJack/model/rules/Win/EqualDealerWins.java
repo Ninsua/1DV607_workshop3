@@ -1,6 +1,7 @@
 package BlackJack.model.rules.Win;
 
 import BlackJack.model.Player;
+import BlackJack.model.RuleVisitor;
 import BlackJack.model.Dealer;
 
 public class EqualDealerWins implements IWinStrategy {
@@ -15,4 +16,8 @@ public class EqualDealerWins implements IWinStrategy {
 	      }
 	      return aDealer.CalcScore() >= aPlayer.CalcScore();
 	}
+
+	public void accept(RuleVisitor visitor) {
+    visitor.visit(this);
+  }
 }

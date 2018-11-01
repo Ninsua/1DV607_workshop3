@@ -2,8 +2,9 @@ package BlackJack.model.rules;
 
 import BlackJack.model.Card;
 import BlackJack.model.Player;
+import BlackJack.model.RuleVisitor;
 
-class Soft17HitStrategy implements IHitStrategy {
+public class Soft17HitStrategy implements IHitStrategy {
     private final int g_hitLimit = 17;
 
     public boolean DoHit(Player a_dealer) {
@@ -46,5 +47,9 @@ class Soft17HitStrategy implements IHitStrategy {
     		return true;
  
     	return false;
-    }
+	}
+	
+	public void accept(RuleVisitor visitor) {
+		visitor.visit(this);
+	  }
 }
