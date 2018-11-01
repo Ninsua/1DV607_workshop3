@@ -1,6 +1,5 @@
 package BlackJack.view;
 
-import BlackJack.model.RuleVisitor;
 import BlackJack.model.RuleVisitor.*;
 
 public class SimpleView implements IView {
