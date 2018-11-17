@@ -1,18 +1,43 @@
 package BlackJack.view;
 
+import BlackJack.model.RuleVisitor.*;
+
 public class SwedishView implements IView 
     {
 	
 	private int input;
 	
         public void DisplayWelcomeMessage()
-        {
-         
+        {         
             for(int i = 0; i < 50; i++) {System.out.print("\n");};
 
             System.out.println("Hej Black Jack Världen");
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+        }
+
+        public void DisplayRules(winsOnEqual equal, hitStrategy strategy, newGameDeal deal) {        
+            System.out.println("-- Regler --");
+    
+            System.out.print("Vinner vid lika: ");
+            if (equal == winsOnEqual.Dealer)
+                System.out.println("Croupiern");
+            else if (equal == winsOnEqual.Player)
+                System.out.println("Spelaren");
+    
+            System.out.print("Dragstrategi: ");
+            if (strategy == hitStrategy.Basic)
+                System.out.println("Standard");
+            else if (strategy == hitStrategy.Soft17)
+                System.out.println("Mjuk 17");
+    
+            System.out.print("Utdelning: ");
+            if (deal == newGameDeal.American)
+                System.out.println("Amerikansk");
+            else if (deal == newGameDeal.International)
+                System.out.println("Internationell");
+    
+            System.out.println();
         }
 
         private int GetInput()
@@ -64,6 +89,7 @@ public class SwedishView implements IView
                 System.out.println("" + colors[a_card.GetColor().ordinal()] + " " + values[a_card.GetValue().ordinal()]);
             }
         }
+        
         public void DisplayPlayerHand(Iterable<BlackJack.model.Card> a_hand, int a_score)
         {
             DisplayHand("Spelare", a_hand, a_score);

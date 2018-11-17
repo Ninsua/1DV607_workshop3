@@ -1,5 +1,7 @@
 package BlackJack.view;
 
+import BlackJack.model.RuleVisitor.*;
+
 public class SimpleView implements IView {
 
     private int input;
@@ -8,9 +10,33 @@ public class SimpleView implements IView {
         for (int i = 0; i < 50; i++) {
             System.out.print("\n");
         }
-        
+
         System.out.println("Hello Black Jack World");
         System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
+    }
+
+    public void DisplayRules(winsOnEqual equal, hitStrategy strategy, newGameDeal deal) {                
+        System.out.println("-- Rules --");
+        
+        System.out.print("Wins on equal: ");        
+        if (equal == winsOnEqual.Dealer)
+            System.out.println("Dealer");
+        else if (equal == winsOnEqual.Player)
+            System.out.println("Player");
+
+        System.out.print("Hit strategy: ");
+        if (strategy == hitStrategy.Basic)
+            System.out.println("Standard");
+        else if (strategy == hitStrategy.Soft17)
+            System.out.println("Soft 17");
+
+        System.out.print("Dealing: ");
+        if (deal == newGameDeal.American)
+            System.out.println("American");
+        else if (deal == newGameDeal.International)
+            System.out.println("International");
+
+        System.out.println();
     }
 
     private int GetInput() {

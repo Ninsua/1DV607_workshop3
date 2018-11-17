@@ -1,17 +1,23 @@
 package BlackJack.model;
 
+import BlackJack.model.rules.*;
+
 public class Game {
 
   private Dealer m_dealer;
   private Player m_player;
 
-  public Game() {
-    m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory());
+  public Game(IRulesFactory rules) {    
+    m_dealer = new Dealer(rules);
     m_player = new Player();
   }
 
   public void addSubscriber(HandObserver newSubscriber) {
     m_dealer.addSubscriber(newSubscriber);
+  }
+
+  public RuleVisitor getVisitor() {
+    return m_dealer.getVisitor();
   }
 
   public boolean IsGameOver() {
