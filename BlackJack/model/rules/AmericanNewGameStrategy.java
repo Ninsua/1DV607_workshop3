@@ -8,10 +8,10 @@ import BlackJack.model.RuleVisitor;
 public class AmericanNewGameStrategy implements INewGameStrategy {
 
   public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
-    a_dealer.giveCard(a_player, true);
-    a_dealer.giveCard(a_dealer, true);
-    a_dealer.giveCard(a_player, true);
-    a_dealer.giveCard(a_dealer, false);
+    a_dealer.dealCard(a_player, true);
+    a_dealer.dealCard(a_dealer, true);
+    a_dealer.dealCard(a_player, true);
+    a_dealer.dealCard(a_dealer, false);
     
     return true;
   }

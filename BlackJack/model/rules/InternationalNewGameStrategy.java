@@ -9,9 +9,9 @@ public class InternationalNewGameStrategy implements INewGameStrategy {
 
   public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
 
-    a_dealer.giveCard(a_player, true);
-    a_dealer.giveCard(a_dealer, true);
-    a_dealer.giveCard(a_player, true);
+    a_dealer.dealCard(a_player, true);
+    a_dealer.dealCard(a_dealer, true);
+    a_dealer.dealCard(a_player, true);
    
     return true;
   }
