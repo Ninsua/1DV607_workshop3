@@ -27,10 +27,6 @@ public class Dealer extends Player {
     m_winRule.accept(visitor);
     
     subscribers = new ArrayList<>();
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
   }
   
   void addSubscriber(HandObserver newSubscriber) {
@@ -56,12 +52,8 @@ public class Dealer extends Player {
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-      Card c = m_deck.GetCard();
-      c.Show(true);
-      a_player.DealCard(c);
+      dealCard(a_player, true);
       
-      notifySubscribers();
-
       return true;
     }
     return false;
@@ -74,12 +66,7 @@ public class Dealer extends Player {
       notifySubscribers();
 		  
 		  while(m_hitRule.DoHit(this)) {
-        Card c = m_deck.GetCard();
-        c.Show(true);
-        
-        DealCard(c);
-        
-        notifySubscribers();
+       dealCard(this, true);
 		  }
 	  }
 	  
@@ -97,6 +84,13 @@ public class Dealer extends Player {
     return false;
   }
 
+  public void dealCard(Player player, boolean showCard) {
+    Card c = m_deck.GetCard();
+    c.Show(showCard);
+    player.addToHand(c);
+    notifySubscribers();
+  }
+  
   public RuleVisitor getVisitor() {
     return visitor;
   }

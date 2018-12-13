@@ -13,7 +13,7 @@ public class Player {
     m_hand = new LinkedList<Card>();
   }
   
-  public void DealCard(Card a_addToHand)
+  protected void addToHand(Card a_addToHand)
   {
     m_hand.add(a_addToHand);
   }
